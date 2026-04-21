@@ -1,0 +1,1 @@
+A proof-of-concept multi-disciplinary monitoring platform for academy players, integrating match performance, physical development, medical, and psychological data into a single Streamlit environment. Designed following conversations with youth development coaches and informed by my work at Beijing Guoan FC. All player data is algorithmically simulated.
