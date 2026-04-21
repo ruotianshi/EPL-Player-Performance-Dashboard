@@ -1,0 +1,160 @@
+EPL Academy Dashboard — Build Log & Project Information
+========================================================
+Generated: April 2025
+Framework: Streamlit + Plotly
+Python: 3.12+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BUILD SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Status:        ✅ ALL TESTS PASSED
+Build Date:    April 2025
+Total Files:   13
+Total Pages:   4 + 1 home
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FILES GENERATED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+app.py                          Main entry point, home landing page
+requirements.txt                Python dependencies (4 packages)
+README.md                       Full project documentation
+
+pages/1_🏠_Overview.py         Squad overview, KPIs, team load heatmap
+pages/2_👤_Player_Profile.py   Individual player 5-tab deep-dive
+pages/3_⚖️_Comparison.py       Scout comparison tool (2–4 players)
+pages/4_🏥_Medical.py          Body map + ACWR + wellness
+
+data/__init__.py                Package init
+data/fake_data.py               Synthetic data generator
+
+utils/__init__.py               Package init
+utils/charts.py                 16 Plotly chart functions
+utils/body_map.py               SVG body map HTML generator
+
+assets/style.css                Dark theme CSS (Barlow Condensed + DM Sans)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FAKE DATA GENERATED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Dataset         Shape       Description
+-----------     ---------   -----------------------------------
+players         (5, 18)     Static profiles — 5 academy players
+physical        (50, 14)    Quarterly fitness tests (2022–2025)
+performance     (15, 17)    Season stats — 3 seasons × 5 players
+technical       (55, 12)    Tri-monthly coaching ratings (10 attrs)
+injuries        (40, 12)    Individual injury records with body regions
+load            (1110, 11)  Daily GPS/ACWR data (Sep 2024–Apr 2025)
+wellness        (430, 7)    Daily health questionnaire (Jan–Apr 2025)
+psych           (5, 15)     Psychological assessments + coach notes
+milestones      (22, 4)     Career milestone events per player
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PLAYERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ID    Name               Position  Age Group  Status      Score
+----  -----------------  --------  ---------  ----------  -----
+P001  Mason Whitfield    CAM       U18        Fit         84
+P002  Kai Oduya          CM        U18        Fit         88
+P003  Luca Hernandez     ST        U16        INJURED     79
+P004  Ethan Kowalski     CB        U21        Precaution  82
+P005  Jaylen Brooks      RB        U18        Fit         81
+
+  → P003 Luca Hernandez has ACTIVE injury: Left Hamstring, Grade II
+    Injured: 2025-03-10 | Est. Return: 2025-04-20 | Days Out: 41
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CHARTS IMPLEMENTED (16 functions in utils/charts.py)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Function                    Type              Page Used
+--------------------------  ----------------  -----------------
+physical_growth_chart()     Line + bands      Player Profile
+fitness_radar_chart()       Radar             Player Profile
+performance_bar_chart()     Bar + line        Player Profile
+xg_xa_chart()               Grouped bar       Player Profile
+technical_radar()           Radar             Player Profile / Compare
+technical_trend_chart()     Multi-line        Player Profile
+acwr_chart()                Line + zones      Profile / Medical
+wellness_heatmap()          Heatmap           Profile / Medical
+injury_burden_chart()       Bar + line        Profile / Medical
+psych_radar()               Dual radar        Player Profile
+team_load_heatmap()         Heatmap           Overview
+team_injury_matrix()        Heatmap           Medical
+comparison_radar()          Overlaid radar    Comparison
+comparison_bar()            Grouped bar H     Comparison
+growth_slope_chart()        Multi-line        Comparison
+position_group_radar()      Radar             Overview
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BODY MAP SPECIFICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Anterior regions (24):
+  Head, Neck, Chest, Abdomen
+  L/R Shoulder, L/R Upper Arm, L/R Elbow, L/R Forearm, L/R Wrist/Hand
+  L/R Groin/Adductors, L/R Quad (Anterior Thigh)
+  L/R Knee (Patella), L/R Shin/Tibia, L/R Ankle, L/R Foot
+
+Posterior regions (24):
+  Head, Neck, Upper Back/Trapezius, Lumbar
+  L/R Shoulder, L/R Upper Arm, L/R Elbow, L/R Forearm
+  L/R Gluteal, L/R Hamstring, L/R Knee
+  L/R Calf, L/R Achilles Tendon, L/R Foot
+
+Color scale (injury count → fill):
+  0  → #F5F5F5  (near-white)
+  1  → #FCE4EC  (light pink)
+  2  → #F48FB1  (pink)
+  3  → #E91E63  (rose)
+  4  → #C62828  (dark red)
+  5+ → #880E4F  (deep crimson)
+  Active → #FF1744 + CSS pulse animation
+
+Interactions:
+  Hover  → Tooltip (part name, injury count, active status)
+  Click  → Right panel with full injury history table + totals
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DEPENDENCIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+streamlit  >= 1.32.0   Web app framework
+pandas     >= 2.0.0    Data manipulation
+numpy      >= 1.24.0   Numerical computing
+plotly     >= 5.18.0   Interactive charts
+
+Install: pip install -r requirements.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HOW TO RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Extract the zip file
+  2. cd epl_academy_dashboard
+  3. pip install -r requirements.txt
+  4. streamlit run app.py
+  5. Open http://localhost:8501 in your browser
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REPLACING FAKE DATA WITH REAL DATA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Each page imports from data/fake_data.py:
+  from data.fake_data import load_all_data
+
+load_all_data() returns a dict of DataFrames with these keys:
+  players, physical, performance, technical,
+  injuries, load, wellness, psych, milestones
+
+To connect real data:
+  1. Create data/real_data.py with same function signature
+  2. Return DataFrames with identical column names
+  3. Update the import line in each page file
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+END OF BUILD LOG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

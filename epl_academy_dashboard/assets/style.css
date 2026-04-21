@@ -1,0 +1,393 @@
+/* EPL Academy Dashboard — Custom Styles */
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ─── Root Variables ─────────────────────────────────── */
+:root {
+  --bg-dark:     #0A0E1A;
+  --bg-card:     #111827;
+  --bg-card-2:   #1A2235;
+  --accent:      #2196F3;
+  --accent-red:  #E91E63;
+  --success:     #4CAF50;
+  --warning:     #FF9800;
+  --danger:      #F44336;
+  --text-primary: #F0F4F8;
+  --text-muted:   #A8BDD0;
+  --border:       rgba(255,255,255,0.08);
+}
+
+/* ─── Global App Overrides ───────────────────────────── */
+.stApp {
+  background: linear-gradient(135deg, #0A0E1A 0%, #0D1528 50%, #0A0E1A 100%) !important;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-primary);
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+  background: #0D1420 !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+/* Sidebar — all text bright */
+section[data-testid="stSidebar"] * {
+  color: #D0DCE8 !important;
+}
+
+/* Sidebar — page nav links */
+section[data-testid="stSidebar"] [data-testid="stSidebarNav"] a,
+section[data-testid="stSidebar"] [data-testid="stSidebarNav"] span,
+section[data-testid="stSidebar"] nav a,
+section[data-testid="stSidebar"] nav span {
+  color: #C8D8E8 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+/* Sidebar — active/selected nav item */
+section[data-testid="stSidebar"] [data-testid="stSidebarNav"] [aria-current="page"],
+section[data-testid="stSidebar"] [data-testid="stSidebarNav"] [aria-current="page"] span {
+  color: #60BDFF !important;
+  font-weight: 700 !important;
+}
+
+/* Sidebar — nav item hover */
+section[data-testid="stSidebar"] [data-testid="stSidebarNav"] a:hover span {
+  color: #90D0FF !important;
+}
+
+/* Sidebar — markdown text (bold, lists, etc.) */
+section[data-testid="stSidebar"] .stMarkdown p,
+section[data-testid="stSidebar"] .stMarkdown li,
+section[data-testid="stSidebar"] .stMarkdown strong {
+  color: #D0DCE8 !important;
+}
+
+/* Sidebar — muted/footer text override */
+section[data-testid="stSidebar"] [style*="546E7A"],
+section[data-testid="stSidebar"] [style*="90A4B4"] {
+  color: #8AAFC8 !important;
+}
+
+/* ─── Buttons (st.button + st.download_button) ───────── */
+.stButton > button,
+.stDownloadButton > button,
+[data-testid="stDownloadButton"] > button {
+  background: linear-gradient(135deg, #1A2848, #1E3058) !important;
+  color: #E4F0FF !important;
+  border: 1px solid rgba(33,150,243,0.35) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.3px !important;
+  transition: all 0.2s !important;
+}
+.stButton > button:hover,
+.stDownloadButton > button:hover,
+[data-testid="stDownloadButton"] > button:hover {
+  background: linear-gradient(135deg, #1E3260, #243A70) !important;
+  border-color: rgba(33,150,243,0.7) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 16px rgba(33,150,243,0.25) !important;
+}
+.stButton > button:active,
+.stDownloadButton > button:active {
+  transform: scale(0.98) !important;
+}
+
+/* ─── Headings & captions (chart section titles) ─────── */
+.stMarkdown h1, .stMarkdown h2,
+.stMarkdown h3, .stMarkdown h4,
+.stMarkdown h5, .stMarkdown h6 {
+  color: #EEF4FA !important;
+}
+.stMarkdown p {
+  color: #D0DDE8 !important;
+}
+[data-testid="stCaptionContainer"] p,
+.stCaption {
+  color: #A8C0D4 !important;
+}
+
+/* ─── Metric Cards — text ────────────────────────────── */
+[data-testid="stMetricLabel"],
+[data-testid="stMetricLabel"] label,
+[data-testid="stMetricLabel"] > div {
+  color: #B8CFDF !important;
+  font-size: 13px !important;
+}
+[data-testid="stMetricValue"],
+[data-testid="stMetricValue"] > div {
+  color: #EEF4FA !important;
+}
+[data-testid="stMetricDelta"] > div {
+  color: #A8C8E0 !important;
+}
+
+/* ─── Form labels (selectbox, multiselect, slider…) ─── */
+.stSelectbox label,
+.stMultiSelect label,
+.stSlider label,
+.stRadio label,
+.stCheckbox label,
+div[data-testid="stWidgetLabel"] > label,
+div[data-testid="stWidgetLabel"] p {
+  color: #C0D4E8 !important;
+  font-size: 13px !important;
+}
+
+/* ─── Selectbox / Multiselect input dark background ──── */
+.stSelectbox [data-baseweb="select"] > div:first-child,
+.stMultiSelect [data-baseweb="select"] > div:first-child {
+  background: #111827 !important;
+  border-color: rgba(255,255,255,0.14) !important;
+  color: #E4F0FF !important;
+}
+.stSelectbox [data-baseweb="select"] svg,
+.stMultiSelect [data-baseweb="select"] svg {
+  fill: #90BFDF !important;
+}
+/* ── BaseUI dropdown portal (rendered outside .stApp) ─── */
+/* Container & background */
+[data-baseweb="popover"],
+[data-baseweb="popover"] > div,
+[data-baseweb="popover"] > div > div,
+[data-baseweb="menu"],
+[data-baseweb="menu"] > ul,
+ul[role="listbox"] {
+  background-color: #111827 !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 8px !important;
+}
+/* Each option row */
+[data-baseweb="option"] {
+  background-color: #111827 !important;
+  color: #E0EEF8 !important;
+}
+[data-baseweb="option"]:hover,
+[data-baseweb="option"][aria-selected="true"] {
+  background-color: rgba(33,150,243,0.2) !important;
+  color: #FFFFFF !important;
+}
+/* All text/span inside options */
+[data-baseweb="option"] *,
+[data-baseweb="menu"] * {
+  color: #E0EEF8 !important;
+}
+[data-baseweb="option"]:hover *,
+[data-baseweb="option"][aria-selected="true"] * {
+  color: #FFFFFF !important;
+}
+
+/* Selected value text inside the closed input box */
+.stSelectbox [data-baseweb="select"] span,
+.stMultiSelect [data-baseweb="select"] span,
+.stSelectbox [data-baseweb="select"] div[class],
+.stMultiSelect [data-baseweb="select"] div[class] {
+  color: #E4F0FF !important;
+}
+
+/* ─── Metric Cards ───────────────────────────────────── */
+[data-testid="metric-container"] {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+[data-testid="metric-container"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(33,150,243,0.15);
+  border-color: rgba(33,150,243,0.3);
+}
+
+/* ─── Player Card ─────────────────────────────────────── */
+.player-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.player-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-red));
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.player-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(33,150,243,0.2);
+  border-color: rgba(33,150,243,0.4);
+}
+.player-card:hover::before { opacity: 1; }
+
+.player-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 700;
+  font-family: 'Barlow Condensed', sans-serif;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg, #1565C0, #E91E63);
+  color: white;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.player-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.player-meta {
+  font-size: 12px;
+  color: #B8CFDF;
+  margin-bottom: 8px;
+}
+
+.score-ring {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Health badge */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+.badge-fit      { background: rgba(76,175,80,0.2); color: #81C784; border: 1px solid rgba(76,175,80,0.3); }
+.badge-injured  { background: rgba(244,67,54,0.2); color: #EF9A9A; border: 1px solid rgba(244,67,54,0.3); }
+.badge-precaution { background: rgba(255,152,0,0.2); color: #FFCC80; border: 1px solid rgba(255,152,0,0.3); }
+
+/* ─── Section Headers ────────────────────────────────── */
+.section-header {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.section-header span {
+  color: var(--accent);
+}
+
+/* ─── Tabs ───────────────────────────────────────────── */
+.stTabs [data-baseweb="tab-list"] {
+  gap: 4px;
+  background: var(--bg-card) !important;
+  border-radius: 10px;
+  padding: 4px;
+}
+.stTabs [data-baseweb="tab"] {
+  border-radius: 8px !important;
+  padding: 8px 18px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 500 !important;
+  color: var(--text-muted) !important;
+  background: transparent !important;
+  transition: all 0.2s !important;
+}
+.stTabs [aria-selected="true"] {
+  background: var(--accent) !important;
+  color: white !important;
+}
+
+/* ─── Dataframe ──────────────────────────────────────── */
+[data-testid="stDataFrame"] {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ─── Color Legend Bar ───────────────────────────────── */
+.legend-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.legend-swatch {
+  width: 20px; height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* ─── Milestone Timeline ─────────────────────────────── */
+.milestone-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.milestone-icon {
+  font-size: 20px;
+  min-width: 30px;
+  text-align: center;
+}
+.milestone-date {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.milestone-event {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ─── Info Panel ─────────────────────────────────────── */
+.info-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.info-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 4px;
+}
+.info-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
